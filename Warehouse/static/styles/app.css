@@ -5,3 +5,20 @@
 .warehouse-img {
     padding: 25px;
 }
+
+
+.product-table {
+    width: 45%;
+    margin: auto;
+}
+
+.td-number {
+    text-align: right;
+}
+
+.btn-spec {
+    padding: 0;
+    width: 100px;
+    height: 25px;
+}
+

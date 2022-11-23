@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'main.html' %}
+
+{% block content %}
+
+<table class="table product-table">
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Unitprice $</th>
+      <th scope="col">In stock</th>
+      <th scope="col"></th>
+      <th scope="col"><a href="{% url 'create-product' %}"><button class="btn btn-success btn-spec" type="submit" href>Add item</button></a></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for product in products %}
+    <tr>
+      <th>{{product.product_name}}</th>
+      <td>{{product.category}}</td>
+      <td class="td-number">{{product.unit_price}}</td>
+      <td class="td-number">{{product.units_in_stock}}</td>
+      <td><a href="{% url 'update-product' product.id %}"><button class="btn btn-primary btn-spec" type="submit" href>Edit</button></a></td>
+      <td><a href="{% url 'delete-product' product.id %}"><button class="btn btn-danger btn-spec" type="submit" href>Delete</button></a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}
+</body>
+</html>
