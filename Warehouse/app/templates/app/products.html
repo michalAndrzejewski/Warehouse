@@ -16,8 +16,9 @@
       <th scope="col">Category</th>
       <th scope="col">Unitprice $</th>
       <th scope="col">In stock</th>
-      <th scope="col"></th>
-      <th scope="col"><a href="{% url 'create-product' %}"><button class="btn btn-success btn-spec" type="submit" href>Add item</button></a></th>
+      {% if request.user.is_authenticated %}
+        <span><th scope="col" colspan="2"><a href="{% url 'create-product' %}"><button class="btn btn-success btn-spec" type="submit" href>Add item</button></a></th></span>
+      {% endif %}
     </tr>
   </thead>
   <tbody>
@@ -27,8 +28,10 @@
       <td>{{product.category}}</td>
       <td class="td-number">{{product.unit_price}}</td>
       <td class="td-number">{{product.units_in_stock}}</td>
-      <td><a href="{% url 'update-product' product.id %}"><button class="btn btn-primary btn-spec" type="submit" href>Edit</button></a></td>
-      <td><a href="{% url 'delete-product' product.id %}"><button class="btn btn-danger btn-spec" type="submit" href>Delete</button></a></td>
+      {% if request.user.is_authenticated %}
+        <td><a href="{% url 'update-product' product.id %}"><button class="btn btn-primary btn-spec" type="submit" href>Edit</button></a></td>
+        <td><a href="{% url 'delete-product' product.id %}"><button class="btn btn-danger btn-spec" type="submit" href>Delete</button></a></td>
+      {% endif %}
     </tr>
   {% endfor %}
   </tbody>

@@ -21,9 +21,9 @@
         <label for="password">Password</label>
         <input type="password" id="password" name="password" class="form-control" placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Log in</button>
+        <span><a class="signUpSign" href="{% url 'register' %}">Sign Up</a></span>
     </form>
-    <p><a href="{% url 'register' %}">Sign Up</a></p>
 </div>
 
 {% endblock content %}
