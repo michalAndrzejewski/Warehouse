@@ -2,19 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import ProductForm
 from .models import Product
-
-cars = [
-    {
-        'make': 'Toyota',
-        'model': 'Corolla',
-        'id': 1,
-    },
-    {
-        'make': 'Fiat',
-        'model': 'Bravo',
-        'id': 2,
-    },
-]
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -27,6 +15,7 @@ def products(request):
     return render(request, 'app/products.html', context)
 
 
+@login_required(login_url='login')
 def create_product(request):
     form = ProductForm()
 
@@ -40,6 +29,7 @@ def create_product(request):
     return render(request, 'app/create-product.html', context)
 
 
+@login_required(login_url='login')
 def update_product(request, pk):
     product = Product.objects.get(id=pk)
     form = ProductForm(instance=product)
@@ -54,6 +44,7 @@ def update_product(request, pk):
     return render(request, 'app/create-product.html', context)
 
 
+@login_required(login_url='login')
 def delete_product(request, pk):
     product = Product.objects.get(id=pk)
     if request.method == 'POST':
@@ -67,7 +58,6 @@ def category(request):
     context = {
         'page': 'category',
         'number': 11,
-        'cars': cars
     }
     return render(request, 'app/category.html', context)
 
