@@ -10,7 +10,6 @@ def user(request):
 
 
 def login_page(request):
-    page = 'login'
 
     if request.user.is_authenticated:
         return redirect('products')
@@ -32,7 +31,7 @@ def login_page(request):
         else:
             messages.error(request, 'Username or password is incorrect')
 
-    return render(request, 'user/login-register.html')
+    return render(request, 'user/login.html')
 
 
 def logout_user(request):
@@ -42,9 +41,7 @@ def logout_user(request):
 
 
 def register_user(request):
-    page = 'register'
     form = CustomUserCreationForm()
-
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -58,6 +55,7 @@ def register_user(request):
             return redirect('products')
         else:
             messages.error(request, 'An error has occured')
+            form.errors
 
-    context = {'page': page, 'form': form}
-    return render(request, 'user/login-register.html', context)
+    context = {'form': form}
+    return render(request, 'user/register.html', context)
