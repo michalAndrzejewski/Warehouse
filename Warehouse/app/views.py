@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import ProductForm
-from .models import Product
+from .models import Product, Category
 from django.contrib.auth.decorators import login_required
 
 
@@ -55,10 +55,8 @@ def delete_product(request, pk):
 
 
 def category(request):
-    context = {
-        'page': 'category',
-        'number': 11,
-    }
+    categories = Category.objects.all()
+    context = {'categories': categories}
     return render(request, 'app/category.html', context)
 
 

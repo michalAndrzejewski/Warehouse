@@ -9,13 +9,13 @@
     {% extends 'main.html' %}
 
     {% block content %}
-    <p>Hello this is {{page}} page</p>
 
-    <ul>
-        {% for car in cars %}
-            <li><a href="{% url 'category' car.id %}">{{car.id}}</a></li>
-        {% endfor %}
-    </ul>
+    {% for category in categories %}
+
+    <p>{{category.category_name}}</p>
+    <p>{{category.description}}</p>
+
+    {% endfor %}
 
     {% endblock content %}
 
