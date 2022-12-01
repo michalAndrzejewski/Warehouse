@@ -6,16 +6,32 @@
 </head>
 <body>
 
-    {% extends 'main.html' %}
+{% extends 'main.html' %}
 
-    {% block content %}
-
-    {% for category in categories %}
-
-    <p>{{category.category_name}}</p>
-    <p>{{category.description}}</p>
-
-    {% endfor %}
+{% block content %}
+<table class="table elements-table">
+  <thead>
+    <tr>
+      <th scope="col">Category name</th>
+      <th scope="col">Description</th>
+      {% if request.user.is_authenticated %}
+        <span><th scope="col" colspan="2"><a href="{% url 'category-create' %}"><button class="btn btn-success btn-spec" type="submit" >Add item</button></a></th></span>
+      {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+  {% for category in categories %}
+    <tr>
+      <th>{{category.category_name}}</th>
+      <td>{{category.description}}</td>
+      {% if request.user.is_authenticated %}
+        <td><a href="{% url 'category-update' category.id %}"><button class="btn btn-primary btn-spec" type="submit">Edit</button></a></td>
+        <td><a href="{% url 'delete-category' category.id %}"><button class="btn btn-danger btn-spec" type="submit">Delete</button></a></td>
+      {% endif %}
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
 
     {% endblock content %}
 

@@ -7,7 +7,7 @@
 }
 
 
-.product-table {
+.elements-table {
     width: 45%;
     margin: auto;
 }
@@ -23,7 +23,7 @@
 }
 
 
-.login-page{
+.items-group{
     width: 20%;
     margin: auto;
     padding-top: 5px;
@@ -31,4 +31,8 @@
 
 .signUpSign {
     float: right;
+}
+
+.category-table {
+
 }

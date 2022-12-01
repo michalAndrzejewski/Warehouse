@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="items-group">
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{form}}
+        </div>
+        <input type="submit" class="btn btn-primary" value="Save"/>
+    </form>
+</div>
+{% endblock content %}
+
+</body>
+</html>

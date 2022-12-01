@@ -59,3 +59,6 @@ def register_user(request):
 
     context = {'form': form}
     return render(request, 'user/register.html', context)
+
+
+

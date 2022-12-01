@@ -9,7 +9,7 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<div class="login-page">
+<div class="items-group">
     <form action="{% url 'login' %}" method="POST">
       {% csrf_token %}
       <div class="form-group">

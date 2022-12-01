@@ -9,7 +9,7 @@
 
 {% block content %}
 
-<table class="table product-table">
+<table class="table elements-table">
   <thead>
     <tr>
       <th scope="col">Product Name</th>
@@ -17,7 +17,8 @@
       <th scope="col">Unitprice $</th>
       <th scope="col">In stock</th>
       {% if request.user.is_authenticated %}
-        <span><th scope="col" colspan="2"><a href="{% url 'create-product' %}"><button class="btn btn-success btn-spec" type="submit" href>Add item</button></a></th></span>
+        <span><th scope="col"><a href="{% url 'create-product' %}"><button class="btn btn-success btn-spec" type="submit" >Add item</button></a></th></span>
+        <span><th scope="col"><a href="{% url 'products-csv' %}"><button class="btn btn-primary btn-spec" type="submit" >Export</button></a></th></span>
       {% endif %}
     </tr>
   </thead>
@@ -29,8 +30,8 @@
       <td class="td-number">{{product.unit_price}}</td>
       <td class="td-number">{{product.units_in_stock}}</td>
       {% if request.user.is_authenticated %}
-        <td><a href="{% url 'update-product' product.id %}"><button class="btn btn-primary btn-spec" type="submit" href>Edit</button></a></td>
-        <td><a href="{% url 'delete-product' product.id %}"><button class="btn btn-danger btn-spec" type="submit" href>Delete</button></a></td>
+        <td><a href="{% url 'update-product' product.id %}"><button class="btn btn-primary btn-spec" type="submit" >Edit</button></a></td>
+        <td><a href="{% url 'delete-product' product.id %}"><button class="btn btn-danger btn-spec" type="submit" >Delete</button></a></td>
       {% endif %}
     </tr>
   {% endfor %}
