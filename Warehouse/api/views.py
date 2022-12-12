@@ -4,6 +4,19 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from . import serializers
 from rest_framework import viewsets
+from .serializers import ProductSerializer
+from app.models import Product
+from rest_framework import filters
+
+
+class ProductViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating profiles"""
+
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('product_name',)
+
 
 '''HelloApiView and connected elements are based on LondonAppDev training course about APIs'''
 
