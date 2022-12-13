@@ -1,12 +1,15 @@
-from django.shortcuts import render
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from . import serializers
+from rest_framework import filters
 from rest_framework import viewsets
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.settings import api_settings
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
+from . import serializers
 from .serializers import ProductSerializer
 from app.models import Product
-from rest_framework import filters
 
 
 class ProductViewSet(viewsets.ModelViewSet):
@@ -17,6 +20,10 @@ class ProductViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('product_name',)
 
+
+class UserLoginApiView(ObtainAuthToken):
+    """Handle creating user authentication tokens"""
+    renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 
 '''HelloApiView and connected elements are based on LondonAppDev training course about APIs'''
 
