@@ -105,6 +105,3 @@ def delete_category(request, pk):
 
 def generate_product_csv(response):
     return product_csv(response)
-
-
-# comment from dev
